@@ -1,1 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — LEPHOTODIALE</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --ink: #111111;
+    --body-text: #333333;
+  }
 
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .layout {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Sidebar nav */
+  .sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    padding: 6vh 24px;
+  }
+
+  .sidebar .logo {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    margin-bottom: 5vh;
+  }
+
+  .sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar li {
+    margin-bottom: 0.9em;
+  }
+
+  .sidebar a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .sidebar a:hover,
+  .sidebar a:focus-visible {
+    text-decoration: underline;
+  }
+
+  .sidebar a.current {
+    font-weight: 700;
+  }
+
+  /* Main content */
+  main {
+    flex: 1;
+    padding: 6vh 48px 10vh;
+  }
+
+  .about-text {
+    max-width: 640px;
+  }
+
+  .about-text p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--body-text);
+    margin: 0 0 1.4em;
+  }
+
+  .about-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--ink);
+  }
+
+  @media (max-width: 720px) {
+    .layout {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      padding: 4vh 20px;
+    }
+    .sidebar .logo {
+      margin-bottom: 3vh;
+    }
+    main {
+      padding: 5vh 20px 8vh;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <nav class="sidebar">
+    <a href="index.html" class="logo">LEPHOTODIALE</a>
+    <ul>
+      <li><a href="index.html">London</a></li>
+      <li><a href="index.html">Edinburgh</a></li>
+      <li><a href="index.html">Canary Island</a></li>
+      <li><a href="index.html">Gallery</a></li>
+      <li><a href="about.html" class="current">About</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="about-text">
+      <p>This is a collection of pictures of some of the streets around the world from my lenses.</p>
+
+      <p>Street photography to me is not &lsquo;taking pictures of random people&rsquo; as some might think and say, my intent is to unveil the idea about how you need a studio, planned poses, the perfect makeup, outfit, hair to make a &lsquo;good picture&rsquo;. Instead sometimes just paying attention to the unnoticed details of our everyday life such as shades in the walls of the houses you walk by every day, the light that reflects on the window of the shop you are about to enter, the shadows of the people created on the sidewalk from the sunset, and my favourite emotions and expressions, which don&rsquo;t necessarily need to be shown by capturing people&rsquo;s faces, it could simply be from their body language, or the hand gestures they are making when speaking to someone, the way someone&rsquo;s coat is folding from a tight hug they&rsquo;re getting, a child&rsquo;s finger pointing at a bird, and I could go on and on, but these are a few examples, not only on how you could get a &lsquo;cool or wholesome picture&rsquo; to post on Instagram, but also how you can connect to the world around you, to the city you are visiting, to its buildings, the skies, the clouds, the cigarettes on the floor marked with someone&rsquo;s lipstick, someone&rsquo;s tattoo, but most importantly to the people that surround you, without needing a one to one interaction, as we all know how hard it can be to speak to &lsquo;strangers&rsquo; nowadays.</p>
+
+      <p>I think just noticing them is enough, your eyes are a tool through which you can admire and appreciate without the need for words, just like a camera.</p>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>
