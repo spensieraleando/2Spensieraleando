@@ -3,14 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>LEPHOTODIALE</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap" rel="stylesheet">
 
-<!-- Cloudinary Gallery -->
 <script src="https://product-gallery.cloudinary.com/latest/all.js"></script>
 
 <style>
@@ -37,7 +35,7 @@
     min-height: 100vh;
   }
 
-  /* LEFT SIDEBAR */
+  /* Sidebar nav */
   .sidebar {
     width: 240px;
     flex-shrink: 0;
@@ -82,18 +80,27 @@
     font-weight: 700;
   }
 
-  /* MAIN PHOTO AREA */
+  /* Main content */
   main {
     flex: 1;
-    padding: 5vw 8vw 5vw 3vw;
-    display: flex;
-    align-items: flex-start;
+    padding: 6vh 48px 10vh;
   }
 
-  /* BIG SINGLE IMAGE */
+  /* Cloudinary photo area */
   #my-gallery {
     width: 100%;
-    max-width: 1000px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  a {
+    color: var(--ink);
   }
 
   @media (max-width: 720px) {
@@ -111,7 +118,7 @@
     }
 
     main {
-      padding: 20px;
+      padding: 5vh 20px 8vh;
     }
   }
 </style>
@@ -134,42 +141,26 @@
   </nav>
 
   <main>
-    <!-- Your London photos -->
     <div id="my-gallery"></div>
   </main>
 
 </div>
 
 <script>
-  const myGallery = cloudinary.galleryWidget({
-    container: "#my-gallery",
+const gallery = cloudinary.galleryWidget({
+  container: "#my-gallery",
+  cloudName: "ftkp5vrp",
+  mediaAssets: [
+    {
+      tag: "London"
+    }
+  ],
+  displayProps: {
+    mode: "classic"
+  }
+});
 
-    cloudName: "ftkp5vrp",
-
-    /* GET ALL IMAGES TAGGED "London" */
-    mediaAssets: [
-      {
-        tag: "London",
-        mediaType: "image"
-      }
-    ],
-
-    /* ONE LARGE IMAGE AT A TIME */
-    displayProps: {
-      mode: "classic"
-    },
-
-    /* Hide the small thumbnails */
-    carouselStyle: "none",
-
-    /* Navigation arrows */
-    navigation: "always",
-
-    /* Return to first photo after last */
-    carouselLoop: "jump"
-  });
-
-  myGallery.render();
+gallery.render();
 </script>
 
 </body>
