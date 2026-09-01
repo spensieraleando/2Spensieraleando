@@ -3,188 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>LEPHOTODIALE</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --bg: #FFFFFF;
-    --ink: #111111;
-  }
 
-  * {
-    box-sizing: border-box;
-  }
+:root {
+  --bg: #ffffff;
+  --ink: #111111;
+}
 
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* PAGE LAYOUT */
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  padding: 8vh 24px 8vh 64px;
+}
+
+.sidebar .logo {
+  display: block;
+  font-family: "Work Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.2em;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  margin-bottom: 6vh;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 0.9em;
+}
+
+.sidebar a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.sidebar a:hover,
+.sidebar a:focus-visible {
+  text-decoration: underline;
+}
+
+.sidebar a.current {
+  font-weight: 700;
+}
+
+
+/* MAIN PHOTO AREA */
+
+main {
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  position: relative;
+  padding-top: 8vh;
+}
+
+
+/* PHOTO POSITION */
+
+.photo-frame {
+  width: 950px;
+  max-width: calc(100vw - 450px);
+  height: 72vh;
+
+  margin-left: 145px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* THE IMAGE */
+
+#main-photo {
+  display: block;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain;
+
+  cursor: pointer;
+
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+
+/* PREVIOUS / NEXT */
+
+.navigation {
+  position: absolute;
+  left: 0;
+  bottom: 48px;
+
+  display: flex;
+  gap: 6px;
+
+  font-size: 0.7rem;
+  text-transform: uppercase;
+}
+
+.navigation button {
+  appearance: none;
+  border: none;
+  background: none;
+  padding: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--ink);
+
+  cursor: pointer;
+}
+
+.navigation button:hover {
+  text-decoration: underline;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
 
   .layout {
-    display: flex;
-    min-height: 100vh;
+    flex-direction: column;
   }
 
-  /* LEFT SIDEBAR */
-
   .sidebar {
-    width: 240px;
-    flex-shrink: 0;
-    padding: 8vh 24px 8vh 64px;
+    width: 100%;
+    padding: 30px 20px;
   }
 
   .sidebar .logo {
-    display: block;
-    font-family: "Work Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 27px;
-    font-weight: 700;
-    line-height: 1.2em;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    margin-bottom: 6vh;
+    margin-bottom: 25px;
   }
-
-  .sidebar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .sidebar li {
-    margin-bottom: 0.9em;
-  }
-
-  .sidebar a {
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 0.95rem;
-  }
-
-  .sidebar a:hover,
-  .sidebar a:focus-visible {
-    text-decoration: underline;
-  }
-
-  .sidebar a.current {
-    font-weight: 700;
-  }
-
-
-  /* MAIN PHOTO AREA */
 
   main {
-    flex: 1;
-    min-width: 0;
-    padding: 5vw 7vw 4vw 3vw;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    min-height: auto;
+    padding: 20px;
   }
-
-
-  /* SINGLE PHOTO */
 
   .photo-frame {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    min-height: 70vh;
+    max-width: 100%;
+    height: 70vh;
+    margin-left: 0;
   }
-
-  #main-photo {
-    display: block;
-
-    width: 100%;
-    max-width: 1000px;
-    max-height: 76vh;
-
-    object-fit: contain;
-
-    cursor: pointer;
-
-    transition: opacity 0.25s ease;
-  }
-
-
-  /* PREV / NEXT */
 
   .navigation {
-    margin-top: 22px;
-    display: flex;
-    gap: 6px;
-
-    font-size: 0.7rem;
-    text-transform: uppercase;
+    position: static;
+    margin-top: 20px;
   }
 
-  .navigation button {
-    border: 0;
-    background: none;
-    padding: 0;
+}
 
-    color: var(--ink);
-    font-family: inherit;
-    font-size: inherit;
-
-    cursor: pointer;
-  }
-
-  .navigation button:hover {
-    text-decoration: underline;
-  }
-
-
-  /* MOBILE */
-
-  @media (max-width: 720px) {
-
-    .layout {
-      flex-direction: column;
-    }
-
-    .sidebar {
-      width: 100%;
-      padding: 4vh 20px;
-    }
-
-    .sidebar .logo {
-      margin-bottom: 3vh;
-    }
-
-    main {
-      padding: 20px;
-    }
-
-    .photo-frame {
-      min-height: auto;
-    }
-
-    #main-photo {
-      max-height: 70vh;
-    }
-  }
 </style>
 </head>
 
 <body>
 
 <div class="layout">
-
-  <!-- LEFT NAVIGATION -->
 
   <nav class="sidebar">
 
@@ -193,32 +216,65 @@
     </a>
 
     <ul>
-      <li><a href="index.html" class="current">London</a></li>
-      <li><a href="edinburgh.html">Edinburgh</a></li>
-      <li><a href="canary-island.html">Canary Island</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="about.html">About</a></li>
+      <li>
+        <a href="index.html" class="current">
+          London
+        </a>
+      </li>
+
+      <li>
+        <a href="edinburgh.html">
+          Edinburgh
+        </a>
+      </li>
+
+      <li>
+        <a href="canary-island.html">
+          Canary Island
+        </a>
+      </li>
+
+      <li>
+        <a href="gallery.html">
+          Gallery
+        </a>
+      </li>
+
+      <li>
+        <a href="about.html">
+          About
+        </a>
+      </li>
     </ul>
 
   </nav>
 
 
-  <!-- MAIN PHOTO -->
-
   <main>
 
     <div class="photo-frame">
+
       <img
         id="main-photo"
         src=""
-        alt="Street photography"
+        alt="London street photography"
       >
+
     </div>
 
+
     <div class="navigation">
-      <button id="prev-button">PREV</button>
+
+      <button id="prev-button">
+        PREV
+      </button>
+
       <span>/</span>
-      <button id="next-button">NEXT</button>
+
+      <button id="next-button">
+        NEXT
+      </button>
+
     </div>
 
   </main>
@@ -228,109 +284,147 @@
 
 <script>
 
-  const cloudName = "ftkp5vrp";
-  const tagName = "London";
+const cloudName = "ftkp5vrp";
+const tagName = "London";
 
-  let photos = [];
-  let currentPhoto = 0;
+let photos = [];
+let currentPhoto = 0;
 
-  const image = document.getElementById("main-photo");
-  const previousButton = document.getElementById("prev-button");
-  const nextButton = document.getElementById("next-button");
+const image = document.getElementById("main-photo");
 
+const previousButton =
+  document.getElementById("prev-button");
 
-  /* LOAD ALL PHOTOS TAGGED "London" FROM CLOUDINARY */
-
-  fetch(
-    `https://res.cloudinary.com/${cloudName}/image/list/${tagName}.json`
-  )
-    .then(response => {
-
-      if (!response.ok) {
-        throw new Error("Could not load photos");
-      }
-
-      return response.json();
-    })
-
-    .then(data => {
-
-      photos = data.resources;
-
-      if (photos.length === 0) {
-        image.alt = "No London photos available";
-        return;
-      }
-
-      showPhoto();
-
-    })
-
-    .catch(error => {
-      console.error(error);
-      image.alt = "Could not load photos";
-    });
+const nextButton =
+  document.getElementById("next-button");
 
 
-  /* SHOW CURRENT PHOTO */
+/* GET ALL PHOTOS TAGGED "London" */
 
-  function showPhoto() {
+fetch(
+  `https://res.cloudinary.com/${cloudName}/image/list/${tagName}.json`
+)
 
-    image.style.opacity = "0";
+.then(response => {
 
-    setTimeout(() => {
+  if (!response.ok) {
+    throw new Error("Could not load photos");
+  }
 
-      image.src = photos[currentPhoto].secure_url;
+  return response.json();
 
-      image.onload = function() {
-        image.style.opacity = "1";
-      };
+})
 
-    }, 150);
+.then(data => {
+
+  photos = data.resources;
+
+  if (!photos || photos.length === 0) {
+
+    image.alt =
+      "No London photos available";
+
+    return;
 
   }
 
+  showPhoto();
 
-  /* NEXT PHOTO */
+})
 
-  function nextPhoto() {
+.catch(error => {
 
-    currentPhoto++;
+  console.error(error);
 
-    if (currentPhoto >= photos.length) {
-      currentPhoto = 0;
-    }
+  image.alt =
+    "Could not load photos";
 
-    showPhoto();
+});
+
+
+/* DISPLAY PHOTO */
+
+function showPhoto() {
+
+  image.style.opacity = "0";
+
+  setTimeout(() => {
+
+    const photo =
+      photos[currentPhoto];
+
+    image.src =
+      `https://res.cloudinary.com/${cloudName}/image/upload/v${photo.version}/${photo.public_id}.${photo.format}`;
+
+    image.onload = () => {
+
+      image.style.opacity = "1";
+
+    };
+
+  }, 150);
+
+}
+
+
+/* NEXT PHOTO */
+
+function nextPhoto() {
+
+  currentPhoto++;
+
+  if (
+    currentPhoto >= photos.length
+  ) {
+
+    currentPhoto = 0;
 
   }
 
+  showPhoto();
 
-  /* PREVIOUS PHOTO */
+}
 
-  function previousPhoto() {
 
-    currentPhoto--;
+/* PREVIOUS PHOTO */
 
-    if (currentPhoto < 0) {
-      currentPhoto = photos.length - 1;
-    }
+function previousPhoto() {
 
-    showPhoto();
+  currentPhoto--;
+
+  if (
+    currentPhoto < 0
+  ) {
+
+    currentPhoto =
+      photos.length - 1;
 
   }
 
+  showPhoto();
 
-  /* BUTTONS */
-
-  nextButton.addEventListener("click", nextPhoto);
-
-  previousButton.addEventListener("click", previousPhoto);
+}
 
 
-  /* CLICKING THE PHOTO ALSO GOES TO THE NEXT ONE */
+/* BUTTONS */
 
-  image.addEventListener("click", nextPhoto);
+nextButton.addEventListener(
+  "click",
+  nextPhoto
+);
+
+previousButton.addEventListener(
+  "click",
+  previousPhoto
+);
+
+
+/* CLICK IMAGE = NEXT IMAGE */
+
+image.addEventListener(
+  "click",
+  nextPhoto
+);
 
 </script>
 
