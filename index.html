@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>LEPHOTODIALE</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap" rel="stylesheet">
 
-<!-- Cloudinary Gallery -->
 <script
   src="https://product-gallery.cloudinary.com/latest/all.js"
   type="text/javascript">
@@ -31,7 +31,6 @@
     background: var(--bg);
     color: var(--ink);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
   }
 
   .layout {
@@ -39,7 +38,7 @@
     min-height: 100vh;
   }
 
-  /* Sidebar nav */
+  /* SIDEBAR */
   .sidebar {
     width: 240px;
     flex-shrink: 0;
@@ -48,12 +47,10 @@
 
   .sidebar .logo {
     display: block;
-    font-family: "Work Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Work Sans", sans-serif;
     font-size: 27px;
     font-weight: 700;
     line-height: 1.2em;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
     color: var(--ink);
     text-decoration: none;
     margin-bottom: 6vh;
@@ -75,8 +72,7 @@
     font-size: 0.95rem;
   }
 
-  .sidebar a:hover,
-  .sidebar a:focus-visible {
+  .sidebar a:hover {
     text-decoration: underline;
   }
 
@@ -84,29 +80,20 @@
     font-weight: 700;
   }
 
-  /* Main content */
+  /* MAIN PHOTO AREA */
   main {
     flex: 1;
-    padding: 6vh 48px 10vh;
+    display: flex;
+    align-items: flex-start;
+    padding: 5vw 10vw 5vw 4vw;
   }
 
-  /* Cloudinary gallery */
   #my-gallery {
     width: 100%;
+    max-width: 1000px;
   }
 
-  h1 {
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 900;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    margin: 0;
-  }
-
-  a {
-    color: var(--ink);
-  }
-
+  /* MOBILE */
   @media (max-width: 720px) {
     .layout {
       flex-direction: column;
@@ -122,7 +109,7 @@
     }
 
     main {
-      padding: 5vh 20px 8vh;
+      padding: 20px;
     }
   }
 </style>
@@ -132,8 +119,12 @@
 
 <div class="layout">
 
+  <!-- LEFT MENU -->
   <nav class="sidebar">
-    <a href="index.html" class="logo">LEPHOTODIALE</a>
+
+    <a href="index.html" class="logo">
+      LEPHOTODIALE
+    </a>
 
     <ul>
       <li><a href="index.html" class="current">London</a></li>
@@ -142,42 +133,53 @@
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
+
   </nav>
 
+  <!-- BIG SINGLE PHOTO -->
   <main>
 
-    <!-- Your Cloudinary London photos appear here -->
     <div id="my-gallery"></div>
 
   </main>
 
 </div>
 
+
 <script>
-  const myGallery = cloudinary.galleryWidget({
-    container: "#my-gallery",
 
-    cloudName: "ftkp5vrp",
+const myGallery = cloudinary.galleryWidget({
 
-    mediaAssets: [
-      {
-        tag: "London",
-        mediaType: "image"
-      }
-    ],
+  container: "#my-gallery",
 
-    displayProps: {
-      mode: "classic",
-      spacing: 10
-    },
+  cloudName: "ftkp5vrp",
 
-    thumbnailProps: {
-      width: 120,
-      height: 120
+  /* GET ALL PHOTOS TAGGED "London" */
+  mediaAssets: [
+    {
+      tag: "London",
+      mediaType: "image"
     }
-  });
+  ],
 
-  myGallery.render();
+  /* SHOW ONE PHOTO AT A TIME */
+  displayProps: {
+    mode: "classic"
+  },
+
+  /* NO THUMBNAILS */
+  carouselStyle: "none",
+
+  /* SHOW NAVIGATION */
+  navigation: "always",
+
+  /* LOOP BACK TO THE FIRST PHOTO */
+  carouselLoop: "jump"
+
+});
+
+myGallery.render();
+
 </script>
 
 </body>
