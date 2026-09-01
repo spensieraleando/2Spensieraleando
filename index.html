@@ -10,10 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap" rel="stylesheet">
 
-<script
-  src="https://product-gallery.cloudinary.com/latest/all.js"
-  type="text/javascript">
-</script>
+<!-- Cloudinary Gallery -->
+<script src="https://product-gallery.cloudinary.com/latest/all.js"></script>
 
 <style>
   :root {
@@ -31,6 +29,7 @@
     background: var(--bg);
     color: var(--ink);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
   .layout {
@@ -38,7 +37,7 @@
     min-height: 100vh;
   }
 
-  /* SIDEBAR */
+  /* LEFT SIDEBAR */
   .sidebar {
     width: 240px;
     flex-shrink: 0;
@@ -47,10 +46,12 @@
 
   .sidebar .logo {
     display: block;
-    font-family: "Work Sans", sans-serif;
+    font-family: "Work Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 27px;
     font-weight: 700;
     line-height: 1.2em;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
     color: var(--ink);
     text-decoration: none;
     margin-bottom: 6vh;
@@ -72,7 +73,8 @@
     font-size: 0.95rem;
   }
 
-  .sidebar a:hover {
+  .sidebar a:hover,
+  .sidebar a:focus-visible {
     text-decoration: underline;
   }
 
@@ -83,17 +85,17 @@
   /* MAIN PHOTO AREA */
   main {
     flex: 1;
+    padding: 5vw 8vw 5vw 3vw;
     display: flex;
     align-items: flex-start;
-    padding: 5vw 10vw 5vw 4vw;
   }
 
+  /* BIG SINGLE IMAGE */
   #my-gallery {
     width: 100%;
     max-width: 1000px;
   }
 
-  /* MOBILE */
   @media (max-width: 720px) {
     .layout {
       flex-direction: column;
@@ -119,12 +121,8 @@
 
 <div class="layout">
 
-  <!-- LEFT MENU -->
   <nav class="sidebar">
-
-    <a href="index.html" class="logo">
-      LEPHOTODIALE
-    </a>
+    <a href="index.html" class="logo">LEPHOTODIALE</a>
 
     <ul>
       <li><a href="index.html" class="current">London</a></li>
@@ -133,53 +131,45 @@
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
-
   </nav>
 
-  <!-- BIG SINGLE PHOTO -->
   <main>
-
+    <!-- Your London photos -->
     <div id="my-gallery"></div>
-
   </main>
 
 </div>
 
-
 <script>
+  const myGallery = cloudinary.galleryWidget({
+    container: "#my-gallery",
 
-const myGallery = cloudinary.galleryWidget({
+    cloudName: "ftkp5vrp",
 
-  container: "#my-gallery",
+    /* GET ALL IMAGES TAGGED "London" */
+    mediaAssets: [
+      {
+        tag: "London",
+        mediaType: "image"
+      }
+    ],
 
-  cloudName: "ftkp5vrp",
+    /* ONE LARGE IMAGE AT A TIME */
+    displayProps: {
+      mode: "classic"
+    },
 
-  /* GET ALL PHOTOS TAGGED "London" */
-  mediaAssets: [
-    {
-      tag: "London",
-      mediaType: "image"
-    }
-  ],
+    /* Hide the small thumbnails */
+    carouselStyle: "none",
 
-  /* SHOW ONE PHOTO AT A TIME */
-  displayProps: {
-    mode: "classic"
-  },
+    /* Navigation arrows */
+    navigation: "always",
 
-  /* NO THUMBNAILS */
-  carouselStyle: "none",
+    /* Return to first photo after last */
+    carouselLoop: "jump"
+  });
 
-  /* SHOW NAVIGATION */
-  navigation: "always",
-
-  /* LOOP BACK TO THE FIRST PHOTO */
-  carouselLoop: "jump"
-
-});
-
-myGallery.render();
-
+  myGallery.render();
 </script>
 
 </body>
